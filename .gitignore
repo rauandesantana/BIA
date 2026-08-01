@@ -1,0 +1,16 @@
+# ==========================================
+# .gitignore
+# ==========================================
+# Ignorar a bolha do ambiente virtual (muito pesado para o GitHub)
+venv/
+
+# Ignorar arquivos temporarios e de cache gerados pelo Python
+__pycache__/
+*.pyc
+
+# Ignorar pastas de dados locais (dados reais não devem ir para o GitHub)
+data/raw/
+data/processed/
+
+# Ignorar logs do sistema
+logs/
