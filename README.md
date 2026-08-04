@@ -1,30 +1,24 @@
 # BIA (Predictive ETL & AI Engine)
 
 ## Visão Geral
-A **BIA** é um motor de Inteligência Artificial preditivo construído do zero, focado na análise de dados contínuos e séries temporais. Seu objetivo principal é identificar padrões passados para gerar previsibilidade de resultados futuros, atuando de forma integrada a pipelines de ETL.
+A **BIA** é um motor de Inteligência Artificial preditivo e totalmente *stateless* (sem estado/sem persistência de dados locais), focado na análise de dados contínuos e séries temporais em memória. O sistema atua como um cérebro volátil que recebe os fluxos de dados de forma transiente, processa as tarefas utilizando pacotes de conhecimento modular e entrega os resultados sem reter bases de dados em disco.
 
 ## Arquitetura do Projeto
-O design do sistema prioriza a robustez através de múltiplas camadas de validação (filtros rigorosos) desde a ingestão dos dados até o treinamento da rede neural.
+O design do sistema prioriza a robustez através de múltiplas camadas de validação e utiliza **Module Packs** para encapsular as regras de negócio e os aprendizados de cada domínio.
 
-- **`data/`**: Armazenamento isolado (ignorado pelo Git).
-  - `raw/`: Dados brutos extraídos do banco/SQL.
-  - `processed/`: Matrizes temporais normalizadas e prontas para a IA.
-- **`src/`**: Código-fonte principal.
-  - `etl_pipeline/`: Lógica de limpeza, normalização e fatiamento temporal (janelas deslizantes).
-  - `model/`: Arquitetura matemática da rede neural.
-  - `utils/`: Checagens de sistema e validações de ambiente.
-- **`config/`**: Variáveis e hiperparâmetros centralizados (`settings.json`).
-- **`logs/`**: Registros de execução e alertas estruturais.
+- **`config/`**: Variáveis centralizadas, hiperparâmetros e registo de comandos dinâmicos (`settings.json`).
+- **`module_packs/`**: O "Cérebro em Módulos" (Pacotes de conhecimento versionados e desacoplados).
+  - `etl_core/`: Regras de limpeza, interpolação e normalização temporal.
+  - `predictive_engine/`: Arquitetura matemática da rede neural.
+- **`src/`**: Código-fonte principal do runtime volátil.
+  - `runtime/`: Núcleo de execução em memória.
+  - `utils/`: Validações de ambiente e ferramentas de sistema.
+- **`logs/`**: Registos operacionais voláteis para observabilidade em tempo de execução (ignorados pelo Git).
 
-## Configuração do Ambiente Local
+## Configuração e Utilização da CLI
 
-Para rodar este projeto, é necessário utilizar um ambiente virtual isolado (`venv`).
+A BIA possui um orquestrador universal (`bia.py`) que dispensa a ativação manual de ambientes virtuais para comandos rotineiros.
 
-1. Ative o ambiente virtual:
-   - Windows (PowerShell): `.\venv\Scripts\Activate.ps1`
-   - Windows (CMD): `.\venv\Scripts\activate.bat`
-   - Linux/Mac: `source venv/bin/activate`
-
-2. Instale as dependências:
+1. **Ver comandos disponíveis:**
    ```bash
-   pip install -r requirements.txt
+   python bia.py
