@@ -1,0 +1,19 @@
+{
+    "paths": {
+        "raw_data_dir": "data/raw/",
+        "processed_data_dir": "data/processed/",
+        "logs_dir": "logs/"
+    },
+    "etl_parameters": {
+        "historical_window_size": 3,
+        "missing_data_strategy": "interpolate"
+    },
+    "model_parameters": {
+        "hidden_layer_size": 32,
+        "learning_rate": 0.01
+    },
+    "scripts": {
+        "limpar_logs": "python -c \"import pathlib; [f.unlink() for f in pathlib.Path('logs').glob('*') if f.is_file()]\"",
+        "teste_echo": "echo \"Teste do ecossistema BIA disparado com sucesso!\""
+    }
+}
