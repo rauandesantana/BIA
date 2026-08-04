@@ -1,8 +1,11 @@
 {
+    "architecture_mode": "stateless_engine",
     "paths": {
-        "raw_data_dir": "data/raw/",
-        "processed_data_dir": "data/processed/",
         "logs_dir": "logs/"
+    },
+    "module_packs_registry": {
+        "active_etl_pack": "module_packs/etl_core/",
+        "active_model_pack": "module_packs/predictive_engine/"
     },
     "etl_parameters": {
         "historical_window_size": 3,
@@ -14,6 +17,6 @@
     },
     "scripts": {
         "limpar_logs": "python -c \"import pathlib; [f.unlink() for f in pathlib.Path('logs').glob('*') if f.is_file()]\"",
-        "teste_echo": "echo \"Teste do ecossistema BIA disparado com sucesso!\""
+        "teste_echo": "echo \"BIA operando com Module Packs e logs operacionais ativos!\""
     }
 }

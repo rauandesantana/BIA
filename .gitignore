@@ -1,16 +1,13 @@
 # ==========================================
-# .gitignore
+# .gitignore (BIA Stateless & Module Packs)
 # ==========================================
-# Ignorar a bolha do ambiente virtual (muito pesado para o GitHub)
+
+# Ignorar o ambiente virtual (pesado e específico de cada máquina local)
 venv/
 
-# Ignorar arquivos temporarios e de cache gerados pelo Python
+# Ignorar ficheiros temporários e de cache gerados pelo Python
 __pycache__/
 *.pyc
 
-# Ignorar pastas de dados locais (dados reais não devem ir para o GitHub)
-data/raw/
-data/processed/
-
-# Ignorar logs do sistema
+# Ignorar os registos operacionais gerados em tempo de execução
 logs/
